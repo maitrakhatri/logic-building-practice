@@ -3,13 +3,16 @@
 // Input: sortArray([100,83,32,9,45,61]) ––> Output: [9,32,45,61,83,100]
 
 const findMin2 = (array) => {
-    let minEl = array[0];
-    for(i=0; i<array.length; i++) {
-        if(array[i+1] < array[i]) {
-            minEl = array[i+1]
+    for(i=0; i < array.length; i++) {
+        for(j=0; j< (array.length -i -1); j++) {
+            if (array[j] > array[j+1]) {
+                let temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
         }
     }
-    return minEl;
+    console.log(array)
 }
 
-console.log(findMin2([6,0,9,8,7]))
+findMin2([100,83,32,9,45,61])
